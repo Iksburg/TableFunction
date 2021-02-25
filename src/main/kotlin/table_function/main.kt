@@ -104,9 +104,15 @@ class TableFunction {
                     }
                 }
                 return when {
-                    quantityNumLess > 0 && quantityNumMore > 0 -> (x - minFirstValue) * (table[firstMaxIndex].y - table[firstMinIndex].y) / (maxFirstValue - minFirstValue) + table[firstMinIndex].y
-                    quantityNumLess > 1 -> (x - minSecondValue) * (table[firstMinIndex].y - table[secondMinIndex].y) / (minFirstValue - minSecondValue) + table[secondMinIndex].y
-                    else -> (x - maxFirstValue) * (table[secondMaxIndex].y - table[firstMaxIndex].y) / (maxSecondValue - maxFirstValue) + table[firstMaxIndex].y
+                    quantityNumLess > 0 && quantityNumMore > 0 -> {
+                        (x - minFirstValue) * (table[firstMaxIndex].y - table[firstMinIndex].y) / (maxFirstValue - minFirstValue) + table[firstMinIndex].y
+                    }
+                    quantityNumLess > 1 -> {
+                        (x - minSecondValue) * (table[firstMinIndex].y - table[secondMinIndex].y) / (minFirstValue - minSecondValue) + table[secondMinIndex].y
+                    }
+                    else -> {
+                        (x - maxFirstValue) * (table[secondMaxIndex].y - table[firstMaxIndex].y) / (maxSecondValue - maxFirstValue) + table[firstMaxIndex].y
+                    }
                 }
             }
         }
@@ -134,5 +140,4 @@ class TableFunction {
         result = 31 * result + size
         return result
     }
-
 }
